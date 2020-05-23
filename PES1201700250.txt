@@ -1,0 +1,38 @@
+1. Introduction
+
+A intal is a nonegative integer of arbitary length. This is a library which can perform calculations on these arbitary length integers. This library is required as C/C++ only supports integer upto 20 digits long on a 64-bit machine. 
+Intal is represented as a string of decimal digits, that are stored in big-endian style.
+One major application of such library is in Cryptography, for generating and operating on huge numbers, numbers which can't be stored in the typical integer data types C/C++ provide.
+
+2. Approach
+
+The integer is represented as a string of decimal digits, as mentioned before.
+The basic pen-paper method to add, subtract, multiply is implemented.
+Care is taken to avoid all the edge cases.
+
+For the modulas functions a log(n) approach is used, instead of just repeated subtractingintal2 from intal1, intal2=intal2*2 is subtracted. intal2 is reset back to original if intal2 is greater than intal1 but intal1 is still greater than the original intal2.
+This is better than repeated subtraction but it can be improved.
+
+For power, it is implemented a utilizing simple math trick to make it faster.
+
+For GCD, Euclid's theorem is implemented. The speed of this function is directly dependant on the mod function. Which like I mentioned before can be improved.
+
+For bincoeff, a modified verison of pascal's triangle is implemented.
+
+For sort, a simple quicksort algorithim is implemented.
+
+For binary search, the iterative method is implemented.
+
+The libray is compiled and tested with GCC-8.3 on Debian 10.
+Valgrind was used to make sure that there isn't any memory leaks.
+
+3. Future Work
+
+If I didn't have any restricitons on implementing the library, I would have stored the intal in the form of int*, instead of char*. This will improve speed up a lot as, instead of operating on single digit at a time, we could operate on a block of digits.
+
+To increase the speed of multiplication, I would implement Karatsuba. I didn't implement Karatsuba in this library, because I have had implemented it for intal of type char* before, but it actually turned out to be slower than the pen-paper method. If the intal is stored as int*, the speed up would be of the charts.
+
+I would also like to implement a fast division algorithm like Newton–Raphson method. Implementing this would also increase the speed up for mod, gcd and binary coefficient. So this would be a great addition to the library. 
+
+
+
